@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  # backend:
+  #   container_name: "server"
+  #   build: .
+  #   command: "npm run dev:server"
+  #   ports:
+  #     - ${SERVER_PORT:-5000}:${SERVER_PORT:-5000}
+  #   environment:
+  #     SERVER_PORT: ${SERVER_PORT:-5000}
+  #     DB_HOST: ${DB_HOST:localhost}
+  #     DB_PORT: ${DB_PORT:-5432}
+  #     DB_USERNAME: ${DB_USER:-pubq}
+  #     DB_PASSWORD: ${DB_PASSWORD:-secret}
+  #     DB_DATABASE: ${DB_NAME:-pubqdb}
+  #   depends_on:
+  #     - db
+  #   links:
+  #     - db
+  #   restart: always
+  db:
+    container_name: "db"
+    image: postgres:alpine3.17
+    ports:
+      - "5432:${DB_PORT:-5432}"
+    volumes:
+      - ./docker/storage/postgresql:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=${DB_USER:-pubq}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-secret}
+      - POSTGRES_DB=${DB_NAME:-pubqdb}
+    restart: unless-stopped
