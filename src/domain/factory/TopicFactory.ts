@@ -3,8 +3,9 @@ import TopicModel from "../model/TopicModel";
 import TopicValidator from "../validator/TopicValidator";
 
 export default class TopicFactory {
-  static createByForm({ name }: TopicForm) {
-    TopicValidator.formValidation({ name });
+  static createByForm(form: TopicForm) {
+    TopicValidator.formValidation(form);
+    const { name } = form;
 
     const model = new TopicModel();
     model.name = name;

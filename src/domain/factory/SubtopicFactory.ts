@@ -4,8 +4,9 @@ import SubtopicValidator from "../validator/SubtopicValidator";
 import TopicFactory from "./TopicFactory";
 
 export default class SubtopicFactory {
-  static createByForm({ name, topicId }: SubtopicForm) {
-    SubtopicValidator.formValidation({ name, topicId });
+  static createByForm(form: SubtopicForm) {
+    SubtopicValidator.formValidation(form);
+    const { name, topicId } = form;
 
     const model = new SubtopicModel();
     model.name = name;

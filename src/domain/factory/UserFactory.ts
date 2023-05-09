@@ -3,8 +3,9 @@ import UserModel from "../model/UserModel";
 import UserValidator from "../validator/UserValidator";
 
 export default class UserFactory {
-  static createByForm({ email, permission, provider }: UserForm) {
-    UserValidator.formValidation({ email, permission, provider });
+  static createByForm(form: UserForm) {
+    UserValidator.formValidation(form);
+    const { email, permission, provider } = form;
 
     const model = new UserModel();
     model.email = email;
