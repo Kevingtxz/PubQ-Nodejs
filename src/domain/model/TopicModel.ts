@@ -2,6 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import AbsModel from "./AbsModel";
 import SubtopicModel from "./SubtopicModel";
 import UserModel from "./UserModel";
+import TopicReportModel from "./TopicReportModel";
 
 @Entity("TOPIC")
 export default class TopicModel extends AbsModel {
@@ -15,4 +16,6 @@ export default class TopicModel extends AbsModel {
   user!: UserModel;
   @OneToMany(() => SubtopicModel, (item) => item.topic)
   subtopics!: SubtopicModel[];
+  @OneToMany(() => TopicReportModel, (item) => item.topic)
+  topicReports!: TopicReportModel[];
 }

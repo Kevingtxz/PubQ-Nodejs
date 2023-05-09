@@ -3,6 +3,7 @@ import AbsModel from "./AbsModel";
 import TopicModel from "./TopicModel";
 import QuestionModel from "./QuestionModel";
 import SubtopicModel from "./SubtopicModel";
+import TopicReportModel from "./TopicReportModel";
 
 @Entity("USER")
 export default class UserModel extends AbsModel {
@@ -25,4 +26,6 @@ export default class UserModel extends AbsModel {
   subtopics!: SubtopicModel[];
   @OneToMany(() => TopicModel, (item) => item.user)
   topics!: TopicModel[];
+  @OneToMany(() => TopicReportModel, (item) => item.user)
+  topicReports!: TopicReportModel[];
 }

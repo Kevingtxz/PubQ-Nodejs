@@ -1,5 +1,5 @@
 export default interface SubtopicForm {
-  readonly name: string;
-  readonly topicId: number;
+  name: string;
+  topicId: number;
   userId?: number;
 }

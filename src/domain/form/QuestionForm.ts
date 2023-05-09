@@ -1,13 +1,13 @@
 export default interface QuestionForm {
-  readonly text: string;
-  readonly a: string;
-  readonly b: string;
-  readonly c: string;
-  readonly d: string;
-  readonly e: string;
-  readonly correct: number;
-  readonly explanation: string;
-  readonly difficulty: number;
-  readonly subtopicId: number;
+  text: string;
+  a: string;
+  b: string;
+  c: string;
+  d: string;
+  e: string;
+  correct: number;
+  explanation: string;
+  difficulty: number;
+  subtopicId: number;
   userId?: number;
 }
