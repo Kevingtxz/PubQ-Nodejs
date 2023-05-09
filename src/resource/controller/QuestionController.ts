@@ -3,6 +3,9 @@ import service from "../../service/impl/QuestionService";
 import QuestionFactory from "../../domain/factory/QuestionFactory";
 import QuestionView from "../view/QuestionView";
 import QuestionForm from "../../domain/form/QuestionForm";
+import QuestionAnswearForm from "../../domain/form/QuestionAnswearForm";
+import QuestionAnswearFactory from "../../domain/factory/QuestionAnswearFactory";
+import QuestionExplanationView from "../view/QuestionExplanationView";
 
 export default {
   async getAllBySubtopic(req: Request, res: Response) {
@@ -44,6 +47,18 @@ export default {
     const model = QuestionFactory.createByForm(form);
     const modelSaved = await service.insert(model);
     const view = QuestionView.toView(modelSaved);
+    return res.status(201).json(view);
+  },
+
+  async postAnswear(req: Request, res: Response) {
+    const form: QuestionAnswearForm = req.body;
+    form.userId = 1;
+    const model = await QuestionAnswearFactory.createByForm(form);
+    const questionModel = await service.insertAnswear(model);
+    if (!questionModel) {
+      return res.status(404).json({ message: "Not found question" });
+    }
+    const view = QuestionExplanationView.toView(questionModel);
     return res.status(201).json(view);
   },
 };

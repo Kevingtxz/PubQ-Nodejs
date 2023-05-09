@@ -4,6 +4,7 @@ import TopicModel from "./TopicModel";
 import QuestionModel from "./QuestionModel";
 import SubtopicModel from "./SubtopicModel";
 import TopicReportModel from "./TopicReportModel";
+import QuestionAnswearModel from "./QuestionAnswearModel";
 
 @Entity("USER")
 export default class UserModel extends AbsModel {
@@ -20,6 +21,8 @@ export default class UserModel extends AbsModel {
   @Column({ name: "ENUM_PERMISSION", type: "int", nullable: false })
   permission!: number;
 
+  @OneToMany(() => QuestionAnswearModel, (item) => item.question)
+  questionAnswears!: QuestionAnswearModel[];
   @OneToMany(() => QuestionModel, (item) => item.user)
   questions!: QuestionModel[];
   @OneToMany(() => SubtopicModel, (item) => item.user)

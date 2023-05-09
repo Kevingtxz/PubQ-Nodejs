@@ -1,7 +1,8 @@
-import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import AbsModel from "./AbsModel";
 import SubtopicModel from "./SubtopicModel";
 import UserModel from "./UserModel";
+import QuestionAnswearModel from "./QuestionAnswearModel";
 
 @Entity("QUESTION")
 export default class QuestionModel extends AbsModel {
@@ -34,4 +35,6 @@ export default class QuestionModel extends AbsModel {
   })
   @JoinColumn({ name: "SUBTOPIC_ID" })
   subtopic!: SubtopicModel;
+  @OneToMany(() => QuestionAnswearModel, (item) => item.question)
+  questionAnswears!: QuestionAnswearModel[];
 }

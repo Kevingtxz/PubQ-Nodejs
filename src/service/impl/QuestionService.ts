@@ -2,6 +2,8 @@ import AppData from "../../config/data/app-data";
 import QuestionModel from "../../domain/model/QuestionModel";
 import UserFactory from "../../domain/factory/UserFactory";
 import IQuestionService from "../IQuestionService";
+import QuestionAnswearModel from "../../domain/model/QuestionAnswearModel";
+import QuestionAnswearService from "./QuestionAnswearService";
 
 class QuestionService implements IQuestionService {
   repo = AppData.getRepository(QuestionModel);
@@ -121,6 +123,15 @@ class QuestionService implements IQuestionService {
 
   async insert(model: QuestionModel): Promise<QuestionModel> {
     return await this.repo.save(model);
+  }
+
+  async insertAnswear(
+    model: QuestionAnswearModel
+  ): Promise<QuestionModel | null> {
+    await QuestionAnswearService.insert(model);
+    const questionModel = await this.find(model.user.id);
+
+    return questionModel;
   }
 
   async insertAll(models: QuestionModel[]): Promise<QuestionModel[]> {

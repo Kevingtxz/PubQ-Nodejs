@@ -9,8 +9,6 @@ export default class QuestionView {
     public readonly c: string,
     public readonly d: string,
     public readonly e: string,
-    public readonly correct: number,
-    public readonly explanation: string,
     public readonly difficulty: number,
     public readonly subtopicId: number
   ) {}
@@ -24,8 +22,6 @@ export default class QuestionView {
       c: model.c,
       d: model.d,
       e: model.e,
-      correct: model.correct,
-      explanation: model.explanation,
       difficulty: model.difficulty,
       subtopicId: model.subtopic.id,
     };
