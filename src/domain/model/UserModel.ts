@@ -1,5 +1,8 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, OneToMany } from "typeorm";
 import AbsModel from "./AbsModel";
+import TopicModel from "./TopicModel";
+import QuestionModel from "./QuestionModel";
+import SubtopicModel from "./SubtopicModel";
 
 @Entity("USER")
 export default class UserModel extends AbsModel {
@@ -15,4 +18,11 @@ export default class UserModel extends AbsModel {
   provider!: number;
   @Column({ name: "ENUM_PERMISSION", type: "int", nullable: false })
   permission!: number;
+
+  @OneToMany(() => QuestionModel, (item) => item.user)
+  questions!: QuestionModel[];
+  @OneToMany(() => SubtopicModel, (item) => item.user)
+  subtopics!: SubtopicModel[];
+  @OneToMany(() => TopicModel, (item) => item.user)
+  topics!: TopicModel[];
 }

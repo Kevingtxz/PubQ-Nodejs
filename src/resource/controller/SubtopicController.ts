@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import service from "../../service/impl/SubtopicService";
 import SubtopicFactory from "../../domain/factory/SubtopicFactory";
 import SubtopicView from "../view/SubtopicView";
+import SubtopicForm from "../../domain/form/SubtopicForm";
 
 export default {
   async getAllByTopic(req: Request, res: Response) {
@@ -12,7 +13,9 @@ export default {
   },
 
   async post(req: Request, res: Response) {
-    const model = SubtopicFactory.createByForm(req.body);
+    const form: SubtopicForm = req.body;
+    form.userId = 1;
+    const model = SubtopicFactory.createByForm(form);
     const modelSaved = await service.insert(model);
     const view = SubtopicView.toView(modelSaved);
     return res.status(201).json(view);

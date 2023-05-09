@@ -1,6 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
 import AbsModel from "./AbsModel";
 import SubtopicModel from "./SubtopicModel";
+import UserModel from "./UserModel";
 
 @Entity("QUESTION")
 export default class QuestionModel extends AbsModel {
@@ -23,6 +24,11 @@ export default class QuestionModel extends AbsModel {
   @Column({ name: "ENUM_DIFFICULTY", type: "int", nullable: false })
   difficulty!: number;
 
+  @ManyToOne(() => UserModel, (item) => item.topics, {
+    nullable: true,
+  })
+  @JoinColumn({ name: "USER_ID" })
+  user!: UserModel;
   @ManyToOne(() => SubtopicModel, (item) => item.questions, {
     nullable: false,
   })

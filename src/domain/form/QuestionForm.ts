@@ -9,4 +9,5 @@ export default interface QuestionForm {
   readonly explanation: string;
   readonly difficulty: number;
   readonly subtopicId: number;
+  userId?: number;
 }

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import service from "../../service/impl/QuestionService";
 import QuestionFactory from "../../domain/factory/QuestionFactory";
 import QuestionView from "../view/QuestionView";
+import QuestionForm from "../../domain/form/QuestionForm";
 
 export default {
   async getAllBySubtopic(req: Request, res: Response) {
@@ -38,7 +39,9 @@ export default {
   },
 
   async post(req: Request, res: Response) {
-    const model = QuestionFactory.createByForm(req.body);
+    const form: QuestionForm = req.body;
+    form.userId = 1;
+    const model = QuestionFactory.createByForm(form);
     const modelSaved = await service.insert(model);
     const view = QuestionView.toView(modelSaved);
     return res.status(201).json(view);

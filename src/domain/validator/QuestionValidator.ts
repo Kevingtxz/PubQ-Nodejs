@@ -13,6 +13,7 @@ export default class QuestionValidator {
     explanation,
     difficulty,
     subtopicId,
+    userId,
   }: QuestionForm): void {
     this.textValidation(text);
     this.textOptionsValidation([a, b, c, d, e]);
@@ -20,6 +21,7 @@ export default class QuestionValidator {
     this.explanationValidator(explanation);
     this.difficultyValidator(difficulty);
     this.subtopicIdValidation(subtopicId);
+    this.userIdValidation(userId);
   }
 
   static textValidation(text: string) {
@@ -57,6 +59,12 @@ export default class QuestionValidator {
   static subtopicIdValidation(subtopicId: number) {
     if (subtopicId < 1) {
       throw new Error("SubtopicId is not valid");
+    }
+  }
+
+  static userIdValidation(userId?: number) {
+    if (!userId || userId < 1) {
+      throw new Error("UserId is not valid");
     }
   }
 }

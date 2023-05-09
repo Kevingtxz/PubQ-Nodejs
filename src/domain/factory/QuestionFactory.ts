@@ -2,6 +2,7 @@ import QuestionForm from "../form/QuestionForm";
 import QuestionModel from "../model/QuestionModel";
 import QuestionValidator from "../validator/QuestionValidator";
 import SubtopicFactory from "./SubtopicFactory";
+import UserFactory from "./UserFactory";
 
 export default class QuestionFactory {
   static createByForm(form: QuestionForm) {
@@ -17,6 +18,7 @@ export default class QuestionFactory {
       explanation,
       difficulty,
       subtopicId,
+      userId,
     } = form;
 
     const model = new QuestionModel();
@@ -30,6 +32,7 @@ export default class QuestionFactory {
     model.explanation = explanation;
     model.difficulty = difficulty;
     model.subtopic = SubtopicFactory.createWithId(subtopicId);
+    model.user = UserFactory.createWithId(userId!);
     return model;
   }
 
