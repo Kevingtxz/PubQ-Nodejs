@@ -2,7 +2,7 @@ import AppData from "../../config/data/app-data";
 import UserModel from "../../domain/model/UserModel";
 import IUserService from "../IUserService";
 
-class UserService implements IUserService {
+export default class UserService implements IUserService {
   repo = AppData.getRepository(UserModel);
 
   async find(id: number): Promise<UserModel | null> {
@@ -17,5 +17,3 @@ class UserService implements IUserService {
     return await this.repo.save(model);
   }
 }
-
-export default new UserService();

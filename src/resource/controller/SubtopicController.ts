@@ -1,8 +1,11 @@
 import { Request, Response } from "express";
-import service from "../../service/impl/SubtopicService";
+import SubtopicService from "../../service/impl/SubtopicService";
 import SubtopicFactory from "../../domain/factory/SubtopicFactory";
 import SubtopicView from "../view/SubtopicView";
 import SubtopicForm from "../../domain/form/SubtopicForm";
+import ISubtopicService from "../../service/ISubtopicService";
+
+const service: ISubtopicService = new SubtopicService();
 
 export default {
   async getAllByTopic(req: Request, res: Response) {

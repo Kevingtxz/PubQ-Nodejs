@@ -2,7 +2,7 @@ import AppData from "../../config/data/app-data";
 import TopicModel from "../../domain/model/TopicModel";
 import ITopicService from "../ITopicService";
 
-class TopicService implements ITopicService {
+export default class TopicService implements ITopicService {
   repo = AppData.getRepository(TopicModel);
 
   async findAll(): Promise<TopicModel[]> {
@@ -26,5 +26,3 @@ class TopicService implements ITopicService {
     return await this.repo.save(model);
   }
 }
-
-export default new TopicService();

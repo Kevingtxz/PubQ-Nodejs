@@ -3,7 +3,7 @@ import SubtopicModel from "../../domain/model/SubtopicModel";
 import ISubtopicService from "../ISubtopicService";
 import TopicFactory from "../../domain/factory/TopicFactory";
 
-class SubtopicService implements ISubtopicService {
+export default class SubtopicService implements ISubtopicService {
   repo = AppData.getRepository(SubtopicModel);
 
   async findAllByTopicId(topicId: number): Promise<SubtopicModel[]> {
@@ -34,5 +34,3 @@ class SubtopicService implements ISubtopicService {
     return await this.repo.save(models);
   }
 }
-
-export default new SubtopicService();

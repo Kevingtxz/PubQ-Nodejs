@@ -1,11 +1,14 @@
 import { Request, Response } from "express";
-import service from "../../service/impl/QuestionService";
+import QuestionService from "../../service/impl/QuestionService";
 import QuestionFactory from "../../domain/factory/QuestionFactory";
 import QuestionView from "../view/QuestionView";
 import QuestionForm from "../../domain/form/QuestionForm";
 import QuestionAnswearForm from "../../domain/form/QuestionAnswearForm";
 import QuestionAnswearFactory from "../../domain/factory/QuestionAnswearFactory";
 import QuestionExplanationView from "../view/QuestionExplanationView";
+import IQuestionService from "../../service/IQuestionService";
+
+const service: IQuestionService = new QuestionService();
 
 export default {
   async getAllBySubtopic(req: Request, res: Response) {

@@ -4,8 +4,12 @@ import UserFactory from "../../domain/factory/UserFactory";
 import IQuestionService from "../IQuestionService";
 import QuestionAnswearModel from "../../domain/model/QuestionAnswearModel";
 import QuestionAnswearService from "./QuestionAnswearService";
+import IQuestionAnswearService from "../IQuestionAnswearService";
 
-class QuestionService implements IQuestionService {
+const questionAnswearService: IQuestionAnswearService =
+  new QuestionAnswearService();
+
+export default class QuestionService implements IQuestionService {
   repo = AppData.getRepository(QuestionModel);
   PAGE_SIZE = 5;
 
@@ -128,7 +132,7 @@ class QuestionService implements IQuestionService {
   async insertAnswear(
     model: QuestionAnswearModel
   ): Promise<QuestionModel | null> {
-    await QuestionAnswearService.insert(model);
+    await questionAnswearService.insert(model);
     const questionModel = await this.find(model.user.id);
 
     return questionModel;
@@ -138,5 +142,3 @@ class QuestionService implements IQuestionService {
     return await this.repo.save(models);
   }
 }
-
-export default new QuestionService();

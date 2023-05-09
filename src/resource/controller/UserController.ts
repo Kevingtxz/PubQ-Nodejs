@@ -1,7 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import UserFactory from "../../domain/factory/UserFactory";
 import UserView from "../view/UserView";
-import service from "../../service/impl/UserService";
+import UserService from "../../service/impl/UserService";
+import IUserService from "../../service/IUserService";
+
+const service: IUserService = new UserService();
 
 export default {
   async get(req: Request, res: Response, next: NextFunction) {
