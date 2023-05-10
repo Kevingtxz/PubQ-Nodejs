@@ -126,7 +126,7 @@ export default class QuestionService implements IQuestionService {
   }
 
   async insert(model: QuestionModel): Promise<QuestionModel> {
-    return await this.repo.save(model);
+    return this.repo.save(model);
   }
 
   async insertAnswear(
@@ -139,6 +139,6 @@ export default class QuestionService implements IQuestionService {
   }
 
   async insertAll(models: QuestionModel[]): Promise<QuestionModel[]> {
-    return await this.repo.save(models);
+    return this.repo.save(models);
   }
 }

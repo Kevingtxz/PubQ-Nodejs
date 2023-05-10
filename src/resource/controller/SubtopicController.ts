@@ -10,7 +10,10 @@ const service: ISubtopicService = new SubtopicService();
 export default {
   async getAllByTopic(req: Request, res: Response) {
     const topicId = Number.parseInt(req.params.topicId);
-    const models = await service.findAllByTopicId(topicId);
+    let models = await service.findAllByTopicId(topicId);
+    if (models.length === 0) {
+      models = await service.generateNewSubtopics(topicId);
+    }
     const views = models.map((item) => SubtopicView.toView(item));
     return res.status(200).json(views);
   },

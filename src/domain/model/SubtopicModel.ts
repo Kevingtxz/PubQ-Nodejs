@@ -3,12 +3,18 @@ import AbsModel from "./AbsModel";
 import TopicModel from "./TopicModel";
 import QuestionModel from "./QuestionModel";
 import UserModel from "./UserModel";
+import SubtopicPromptModel from "./SubtopicPromptModel";
 
 @Entity("SUBTOPIC")
 export default class SubtopicModel extends AbsModel {
   @Column({ name: "NAME", type: "varchar", nullable: false })
   name!: string;
 
+  @ManyToOne(() => SubtopicPromptModel, (item) => item.subtopics, {
+    nullable: true,
+  })
+  @JoinColumn({ name: "PROMPT_ID" })
+  subtopicPrompt?: SubtopicPromptModel;
   @ManyToOne(() => TopicModel, (item) => item.subtopics, {
     nullable: false,
   })

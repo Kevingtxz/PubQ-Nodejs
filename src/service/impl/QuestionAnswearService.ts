@@ -6,6 +6,6 @@ export default class QuestionAnswearService implements IQuestionAnswearService {
   repo = AppData.getRepository(QuestionAnswearModel);
 
   async insert(model: QuestionAnswearModel): Promise<QuestionAnswearModel> {
-    return await this.repo.save(model);
+    return this.repo.save(model);
   }
 }

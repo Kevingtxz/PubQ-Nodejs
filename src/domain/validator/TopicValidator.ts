@@ -8,7 +8,7 @@ export default class TopicValidator {
 
   static nameValidation(name: string) {
     if (name.length < 1) {
-      throw new Error("Name cannot be empty");
+      throw new Error("Name is not valid");
     }
   }
 

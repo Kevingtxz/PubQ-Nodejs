@@ -23,6 +23,6 @@ export default class TopicService implements ITopicService {
   }
 
   async insert(model: TopicModel): Promise<TopicModel> {
-    return await this.repo.save(model);
+    return this.repo.save(model);
   }
 }

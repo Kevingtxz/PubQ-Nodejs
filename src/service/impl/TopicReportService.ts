@@ -6,6 +6,6 @@ export default class TopicReportService implements ITopicReportService {
   repo = AppData.getRepository(TopicReportModel);
 
   async insert(model: TopicReportModel): Promise<TopicReportModel> {
-    return await this.repo.save(model);
+    return this.repo.save(model);
   }
 }

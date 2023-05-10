@@ -14,6 +14,6 @@ export default class UserService implements IUserService {
   }
 
   async insert(model: UserModel): Promise<UserModel> {
-    return await this.repo.save(model);
+    return this.repo.save(model);
   }
 }
