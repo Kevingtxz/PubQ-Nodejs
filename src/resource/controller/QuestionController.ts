@@ -14,7 +14,10 @@ export default {
   async getAllBySubtopic(req: Request, res: Response) {
     const pageNumber = Number.parseInt(req.params.pageNumber);
     const subtopicId = Number.parseInt(req.params.subtopicId);
-    const models = await service.findPageAllBySubtopic(subtopicId, pageNumber);
+    let models = await service.findPageAllBySubtopic(subtopicId, pageNumber);
+    if (models.length === 0) {
+      models = await service.generateNewQuestions(subtopicId);
+    }
     const views = models.map((item) => QuestionView.toView(item));
     return res.status(200).json(views);
   },

@@ -2,14 +2,15 @@ import QuestionAnswearModel from "../domain/model/QuestionAnswearModel";
 import QuestionModel from "../domain/model/QuestionModel";
 
 export default interface IQuestionService {
+  find(id: number): Promise<QuestionModel | null>;
+  findPageAll(page: number): Promise<QuestionModel[]>;
   findPageAllBySubtopic(
     subtopicId: number,
     page: number
   ): Promise<QuestionModel[]>;
   findPageAllByTopic(topicId: number, page: number): Promise<QuestionModel[]>;
-  findPageAll(page: number): Promise<QuestionModel[]>;
-  find(id: number): Promise<QuestionModel | null>;
+  generateNewQuestions(subtopicId: number): Promise<QuestionModel[]>;
   insert(model: QuestionModel): Promise<QuestionModel>;
-  insertAnswear(model: QuestionAnswearModel): Promise<QuestionModel | null>;
   insertAll(models: QuestionModel[]): Promise<QuestionModel[]>;
+  insertAnswear(model: QuestionAnswearModel): Promise<QuestionModel | null>;
 }

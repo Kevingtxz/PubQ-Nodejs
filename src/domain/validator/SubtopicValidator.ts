@@ -7,6 +7,7 @@ export default class SubtopicValidator {
     this.topicIdValidation(topicId);
     this.promptIdValidation(promptId);
   }
+
   static formValidation({ name, topicId, userId }: SubtopicForm): void {
     this.nameValidation(name);
     this.topicIdValidation(topicId);

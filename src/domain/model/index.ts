@@ -5,6 +5,7 @@ import QuestionModel from "./QuestionModel";
 import TopicReportModel from "./TopicReportModel";
 import QuestionAnswearModel from "./QuestionAnswearModel";
 import SubtopicPromptModel from "./SubtopicPromptModel";
+import QuestionPromptModel from "./QuestionPromptModel";
 
 export default [
   UserModel,
@@ -14,4 +15,5 @@ export default [
   TopicReportModel,
   QuestionAnswearModel,
   SubtopicPromptModel,
+  QuestionPromptModel,
 ];

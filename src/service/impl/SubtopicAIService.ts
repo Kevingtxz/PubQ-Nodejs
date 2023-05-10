@@ -8,7 +8,6 @@ import {
 } from "../../domain/enum/subtopic-template-prompt-enum";
 import SubtopicFactory from "../../domain/factory/SubtopicFactory";
 import SubtopicPromptFactory from "../../domain/factory/SubtopicPromptFactory";
-import SubtopicFromCompletionForm from "../../domain/form/subtopic-ai/SubtopicCompletionForm";
 import SubtopicToAIForm from "../../domain/form/subtopic-ai/SubtopicToAIForm";
 import SubtopicModel from "../../domain/model/SubtopicModel";
 import ISubtopicAIService from "../ISubtopicAIService";
